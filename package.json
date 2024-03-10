@@ -3,14 +3,14 @@
   "name": "mono",
   "private": true,
   "scripts": {
-    "clean": "turbo clean",
     "dev": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
+    "prepare": "husky install",
     "format": "prettier --write \"**/*.{ts,js,jsx,tsx,md}\"",
     "format:check": "prettier --check \"**/*.{ts,js,jsx,tsx,md}\"",
-    "upgrade:all": "find . -type f -name 'package.json' -not -path './.git/*' -not -path '*/node_modules/*' -not -path '*/build/*' -not -path '*/out/*' -not -path '*/dist/*' -not -path '*/.next/*' -execdir ncu --upgrade ';'"
-
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "upgrade": "find . -type f -name 'package.json' -not -path './.git/*' -not -path '*/node_modules/*' -not -path '*/build/*' -not -path '*/out/*' -not -path '*/dist/*' -not -path '*/.next/*' -execdir ncu --upgrade ';'"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
@@ -18,7 +18,10 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "turbo": "latest"
+    "turbo": "latest",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
+    "husky": "^9.0.11"
   },
   "engines": {
     "node": ">=20.11.1"

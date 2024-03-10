@@ -27,7 +27,6 @@ module.exports = {
         'dist/',
         'out/',
         'build/'
-
     ],
     overrides: [
         {
